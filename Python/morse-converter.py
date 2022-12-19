@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import re
+
 alphabet = {
 	"A": ".-",
 	"B": "-...",
@@ -40,17 +42,39 @@ alphabet = {
 }
 
 def translate():
-    string = ''
-    letters = []
     with open("code.txt", "r") as file:
         for line in file:
-            letters = line.split()
-            for x in range(len(letters)):
-                for key,value in alphabet.items():
-                    if (value == letters[x]):
-                        string += key + ' '
-            string += "\n"
-    print(f"{string}")
+            if (line[0] == '.' or line[0] == '-'):
+                print(f"Line \"{line.rstrip()}\" is written in morse code.")
+                string = ''
+                letters = []
+                letters = line.split()
+                length = len(letters)
+                for x in range(length):
+                    for key,value in alphabet.items():
+                        if (value == letters[x]):
+                            if (x == length-1):
+                                string += key
+                            else:
+                                string += key + ' '
+                print(f"Decoded message is: \"{string}\".")
+            else:
+                print(f"Line \"{line.rstrip()}\" is written in plain text.")
+                string = ''
+                letters = []
+                for letter in line:
+                    letters.append(letter)
+                length = len(letters)
+                for x in range(length):
+                    for key,value in alphabet.items():
+                        if (key == letters[x]):
+                            if (x == length-2):
+                                string += value
+                            else:
+                                string += value + ' '
+
+                print(f"Encoded message is: \"{string}\".")
 
 if __name__ == "__main__":
+    #codetotext()
     translate()
