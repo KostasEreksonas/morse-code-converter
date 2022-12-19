@@ -37,4 +37,13 @@ const alphabet = {
     "0": "-----"
 }
 
-console.log(alphabet)
+function getText() {
+    let result = document.getElementById("morseCode").value;
+    return result;
+}
+
+function convertText(text) {
+    document.getElementById("result").innerHTML = text;
+}
+
+convertText(getText());
