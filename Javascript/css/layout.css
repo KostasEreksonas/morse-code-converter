@@ -15,7 +15,6 @@ body {
         'm'
         'f'
     ;
-    grid-gap: 10px;
 }
 
 body > header {
@@ -36,7 +35,7 @@ header {
     display: grid;
     grid-template-areas:
         'header navigation'
-;
+    ;
 }
 
 header > h1 {
