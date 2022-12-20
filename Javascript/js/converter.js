@@ -38,12 +38,26 @@ const alphabet = {
 }
 
 function convertText() {
+    let keys = Object.keys(alphabet);
     let text = document.getElementById('morseCode').value;
     for (let i = 0; i < text.length; i++) {
+        //  -------------
+        // | NEEDS A FIX |
+        //  -------------
+        // If a morse code is entered, append . and - symbols until whitespace, then convert a group of them to plain text
+        // Repeat the process until end of line
         if (text[0] === '.' || text[0] === '-') {
-			document.getElementById('result').innerHTML = text + ' is written in morse code.';
+            let result = text.match(/\s/);
+            let string = '';
+            while (result === false) {
+                string += text[i];
+            }
+            for (let j = 0; j < keys.length; j++) {
+                if (string === alphabet[keys[j]]) {
+                    document.getElementById('result').innerHTML += keys[j] + ' ';
+                }
+            }
         } else {
-            let keys = Object.keys(alphabet);
             for (let j = 0; j < keys.length; j++) {
                 if (text[i] === keys[j]) {
                         document.getElementById('result').innerHTML += alphabet[keys[j]] + ' ';
