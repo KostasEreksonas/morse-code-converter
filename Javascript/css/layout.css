@@ -4,3 +4,86 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+/* Body layout - Start */
+body {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    grid-template-areas:
+        'h'
+        'm'
+        'f'
+    ;
+    grid-gap: 10px;
+}
+
+body > header {
+    grid-area: h;
+}
+
+body > main {
+    grid-area: m;
+}
+
+body > footer {
+    grid-area: f;
+}
+/* Body layout - End */
+
+/* Header layout - Start */
+header {
+    display: grid;
+    grid-template-areas:
+        'header navigation'
+;
+}
+
+header > h1 {
+    grid-area: header;
+}
+
+header > nav {
+    grid-area: navigation;
+}
+/* Header layout - End */
+
+/* Main layout - Start */
+main {
+    display: grid;
+    grid-template-areas:
+        'heading'
+        'input'
+        'output'
+    ;
+}
+
+main > h1 {
+    grid-area: heading;
+}
+
+main > form {
+    grid-area: input;
+}
+
+main > span {
+    grid-area: output;
+}
+/* Main layout - End */
+
+/* Footer layout - Start */
+footer {
+    display: grid;
+    grid-template-areas:
+        'license navigation'
+    ;
+}
+
+footer > span {
+    grid-area: license;
+}
+
+footer > nav {
+    grid-area: navigation;
+}
+/* Footer layout - End */
