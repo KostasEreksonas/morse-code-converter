@@ -7,43 +7,51 @@ html, body {
 
 /* Body layout - Start */
 body {
-    display: block;
+    display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.wrapper {
+    height: 100%;
+    width: 100%;
+    display: grid;
     grid-template-areas:
         'h'
         'm'
         'f'
-    ;
+;
+    grid-gap: 10px;
 }
 
-body > header {
+.wrapper > header {
     grid-area: h;
 }
 
-body > main {
+.wrapper > main {
     grid-area: m;
 }
 
-body > footer {
+.wrapper > footer {
     grid-area: f;
 }
 /* Body layout - End */
 
 /* Header layout - Start */
 header {
-    display: grid;
     grid-template-areas:
         'header navigation'
     ;
 }
 
-header > h1 {
+header h1 {
     grid-area: header;
 }
 
-header > nav {
+header nav {
+    display: grid;
     grid-area: navigation;
+    align-items: center;
 }
 /* Header layout - End */
 
@@ -57,15 +65,15 @@ main {
     ;
 }
 
-main > h1 {
+main h1 {
     grid-area: heading;
 }
 
-main > form {
+main form {
     grid-area: input;
 }
 
-main > span {
+main span {
     grid-area: output;
 }
 /* Main layout - End */
@@ -79,6 +87,7 @@ footer {
 }
 
 footer > span {
+    display: grid;
     grid-area: license;
 }
 

@@ -21,6 +21,44 @@ main {
     background-color: var(--main-color);
 }
 
+main h1 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+main form {
+    text-align: center;
+}
+
+#label {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+input {
+    padding: 1%;
+}
+
+input[type=text] {
+    width: 75%;
+    font-size: 24px;
+}
+
+input[type=button] {
+    width: 20%;
+}
+
+#result {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
 footer {
     background-color: var(--footer-color);
+}
+
+footer span {
+    place-content: center;
 }
