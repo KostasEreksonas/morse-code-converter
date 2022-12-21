@@ -37,35 +37,36 @@ const alphabet = {
     "0": "-----"
 }
 
-function convertText() {
-    let keys = Object.keys(alphabet);
-    let text = document.getElementById('morseCode').value;
-    for (let i = 0; i < text.length; i++) {
-        //  -------------
-        // | NEEDS A FIX |
-        //  -------------
-        // If a morse code is entered, append . and - symbols until whitespace, then convert a group of them to plain text
-        // Repeat the process until end of line
-        if (text[0] === '.' || text[0] === '-') {
-            let result = text.match(/\s/);
-            let string = '';
-            while (result === false) {
-                string += text[i];
+function morseToText(text, keys) {
+    let string = text.split(/\s/);
+    for (let i = 0; i < string.length; i++) {
+        for (let j = 0; j < keys.length; j++) {
+            if (string[i] === alphabet[keys[j]]) {
+                document.getElementById('result').innerHTML += keys[j] + ' ';
             }
-            for (let j = 0; j < keys.length; j++) {
-                if (string === alphabet[keys[j]]) {
-                    document.getElementById('result').innerHTML += keys[j] + ' ';
-                }
-            }
-        } else {
-            for (let j = 0; j < keys.length; j++) {
-                if (text[i] === keys[j]) {
-                        document.getElementById('result').innerHTML += alphabet[keys[j]] + ' ';
-                    }
-                }
-            }
-		}
+        }
     }
+}
+
+function textToMorse(text, keys) {
+    for (let i = 0; i < text.length; i++) {
+        for (let j = 0; j < keys.length; j++) {
+            if (text[i] === keys[j]) {
+                document.getElementById('result').innerHTML += alphabet[keys[j]] + ' ';
+            }
+        }
+    }
+}
+
+function convertText() {
+    let alphabetKeys = Object.keys(alphabet);
+    let value = document.getElementById('morseCode').value;
+    if (value[0] === '.' || value[0] === '-') {
+        morseToText(value, alphabetKeys);
+    } else {
+        textToMorse(value, alphabetKeys);
+    }
+}
 
 let button = document.getElementById('convert');
 button.addEventListener('click', convertText);
