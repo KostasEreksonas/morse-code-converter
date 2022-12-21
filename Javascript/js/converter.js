@@ -38,6 +38,7 @@ const alphabet = {
 }
 
 function morseToText(text, keys) {
+    document.getElementById('result').innerHTML = '';
     let string = text.split(/\s/);
     for (let i = 0; i < string.length; i++) {
         for (let j = 0; j < keys.length; j++) {
@@ -49,6 +50,7 @@ function morseToText(text, keys) {
 }
 
 function textToMorse(text, keys) {
+    document.getElementById('result').innerHTML = '';
     for (let i = 0; i < text.length; i++) {
         for (let j = 0; j < keys.length; j++) {
             if (text[i] === keys[j]) {
@@ -62,8 +64,10 @@ function convertText() {
     let alphabetKeys = Object.keys(alphabet);
     let value = document.getElementById('morseCode').value;
     if (value[0] === '.' || value[0] === '-') {
+        document.getElementById('morseCode').value = '';
         morseToText(value, alphabetKeys);
     } else {
+        document.getElementById('morseCode').value = '';
         textToMorse(value, alphabetKeys);
     }
 }
